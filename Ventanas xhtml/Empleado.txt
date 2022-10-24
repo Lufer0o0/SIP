@@ -1,0 +1,261 @@
+<!--
+        <table border="4" width="1000px" align="left" cellspacing="2" cellpadding="5" bgcolor="#f0f8ff">
+            <tr>
+                <td width="250px" align="center">
+                    <div class="mt-4">
+                        <font face="Verdana" size="4"> Registrar Empleado </font>
+                        <br></br>
+                        <br></br>
+
+
+                        <h:form>
+
+
+                            <h:panelGrid columns="3" cellpadding="5">
+
+                                <p:outputLabel value="Cedula " for="codigo_u"/>
+                                <p:inputText id="codigo_u" value="#{usuarioBean.cedulaRegistro2}" required="true"/>
+                                <p:message for="codigo_u"/>
+
+                                <p:outputLabel value="Nombre Completo" for="nombre_u"/>
+                                <p:inputText id="nombre_u" value="#{usuarioBean.nombreRegistro2}" required="true"/>
+                                <p:message for="nombre_u"/>
+
+                                <p:outputLabel value="Direccion:" for="celular_u"/>
+                                <p:inputText id="celular_u" value="#{usuarioBean.direccionRegistro2}" required="true"/>
+                                <p:message for="celular_u"/>
+
+
+                                <p:outputLabel value="Fecha Contratacion:" for="fecha_p"/>
+                                <p:datePicker id="fecha_p" value="#{usuarioBean.fechaContratacionRegistro2}" required="true" />
+                                <p:message for="fecha_p"/>
+
+
+                                <p:outputLabel value="Clave" for="clave"/>
+                                <p:inputText id="clave" value="#{usuarioBean.claveRegistro2}" required="true"/>
+                                <p:message for="clave"/>
+
+
+
+                            </h:panelGrid>
+                            <p:growl showDetail="true" for="mensajeEmpleado"/>
+                            <br/>
+                            <br/>
+                            <div align="center">
+
+                                <p:commandButton styleClass="rounded-button ui-button-success" value="Registrar Empleado"
+                                                 action="#{usuarioBean.registrarEmpleado}" update="@form"/>
+                            </div>
+                            <p:growl for="mensajeEmpleado" showDetail="true"/>
+                        </h:form>
+
+                    </div>
+                </td>
+                <td width="250px">
+                    <div class="mt-4">
+                        <center>
+                            <font face="Verdana" size="4"> Actualizar Empleado </font>
+                        </center>
+                        <br></br>
+                        <br></br>
+                        <h:form>
+
+
+                            <h:panelGrid columns="3" cellpadding="6">
+
+                                <p:outputLabel value="Cedula del Empleado a modificar " for="codigo_u"/>
+                                <p:inputText id="codigo_u" value="#{usuarioBean.cedulaActualizar2}" required="true"/>
+                                <p:message for="codigo_u"/>
+
+
+                                <p:outputLabel value="Nombre Completo" for="nombre_u"/>
+                                <p:inputText id="nombre_u" value="#{usuarioBean.nombreActualizar2}" required="false"/>
+                                <p:message for="nombre_u"/>
+
+
+
+                                <p:outputLabel value="Direccion" for="direccion_u"/>
+                                <p:inputText id="direccion_u" value="#{usuarioBean.direccionActualizar2}" required="false"/>
+                                <p:message for="direccion_u"/>
+
+
+                                <p:outputLabel for="cargo" value="Cargo"/>
+                                <p:selectOneMenu id="cargo" value="#{usuarioBean.cargo}" dynamic="true">
+                                    <f:selectItem itemLabel="Seleccione un cargo" itemValue=""/>
+                                    <f:selectItems value="#{usuarioBean.nombresCargos}"/>
+                                </p:selectOneMenu>
+                                <p:message for="cargo"/>
+
+
+
+                                <p:outputLabel for="Jefe" value="Jefe"/>
+                                <p:selectOneMenu id="Jefe" value="#{usuarioBean.empleadoJefe}" dynamic="true">
+                                    <f:selectItem itemLabel="Seleccione jefe inmediato" itemValue=""/>
+                                    <f:selectItems value="#{usuarioBean.nombresEmpleados}"/>
+                                </p:selectOneMenu>
+                                <p:message for="cargo"/>
+
+
+
+                                <p:outputLabel for="contrato" value="Tipo Contrato"/>
+                                <p:selectOneMenu id="contrato" value="#{usuarioBean.contrato}" dynamic="true">
+                                    <f:selectItem itemLabel="Seleccione tipo contrato" itemValue=""/>
+                                    <f:selectItems value="#{usuarioBean.nombresContratos}"/>
+                                </p:selectOneMenu>
+                                <p:message for="contrato"/>
+
+
+                                <p:outputLabel value="Clave" for="clave"/>
+                                <p:inputText id="clave" value="#{usuarioBean.claveActualizar2}" />
+                                <p:message for="clave"/>
+
+
+
+
+                            </h:panelGrid>
+                            <p:growl for="mensajeEmpleado" showDetail="true"/>
+                            <br/>
+
+                            <div align="center">
+                                <h:commandButton value="Buscar Empleado"
+                                                 action="#{usuarioBean.buscarEmpleado}" update="@form"/>
+
+
+                                <p:commandButton styleClass="rounded-button ui-button-warning"
+                                                 value="Actualizar Empleado"
+                                                 action="#{usuarioBean.actualizarEmpleado}" update="@form"/>
+                                <p:growl for="mensajeEmpleado" showDetail="true"/>
+
+                            </div>
+
+                        </h:form>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+
+                <td width="250px">
+                    <div class="mt-4">
+                        <center>
+                            <font face="Verdana" size="4"> Buscar Empleado </font>
+                        </center>
+                        <br></br>
+                        <br></br>
+                        <h:form>
+
+                            <h:panelGrid columns="3" cellpadding="5">
+
+                                <p:outputLabel value="Cedula " for="codigo_u"/>
+                                <p:inputText id="codigo_u" value="#{usuarioBean.cedulaBuscar2}" required="true"/>
+                                <p:message for="codigo_u"/>
+
+
+                            </h:panelGrid>
+                            <p:growl showDetail="true" for="mensajeEmpleado"/>
+                            <br/>
+                            <div align="center">
+                                <h:commandButton value="Buscar Empelado"
+                                                 action="#{usuarioBean.buscarEmpleado2}" update="@form"/>
+                            </div>
+
+                            <br/>
+                            <br/>
+
+
+                            <h:panelGrid columns="3" cellpadding="6" rendered="#{usuarioBean.renderBuscar}">
+
+
+                                <p:outputLabel value="Cedula :" for="nit_u"/>
+                                <p:inputText id="nit_u" value="#{usuarioBean.cedulaBuscar2}" required="false"/>
+                                <p:message for="nit_u"/>
+
+
+                                <p:outputLabel value="Nombre Completo" for="nombre_u"/>
+                                <p:inputText id="nombre_u" value="#{usuarioBean.nombreBuscar2}" required="false"/>
+                                <p:message for="nombre_u"/>
+
+
+                                <p:outputLabel value="Direccion:" for="direccion"/>
+                                <p:inputText id="direccion" value="#{usuarioBean.direccionBuscar2}" required="false"/>
+                                <p:message for="direccion"/>
+
+                                <p:outputLabel value="Cargo: " for="cargo"/>
+                                <p:inputText id="cargo" value="#{usuarioBean.cargoCodigoBuscar2}" required="false"/>
+                                <p:message for="cargo"/>
+
+
+                                <p:outputLabel value="Tipo de contrato: " for="contrato"/>
+                                <p:inputText id="contrato" value="#{usuarioBean.tipoContratoBuscar2}" required="false"/>
+                                <p:message for="contrato"/>
+
+                                <p:outputLabel value="Fecha contratacion " for="fecha"/>
+                                <p:inputText id="fecha" value="#{usuarioBean.fechaContratacionBuscar2}" required="false"/>
+                                <p:message for="fecha"/>
+
+                                <p:outputLabel value="Jefe inmediato: " for="jefe"/>
+                                <p:inputText id="jefe" value="#{usuarioBean.jefeInmediatoBuscar2}" required="false"/>
+                                <p:message for="jefe"/>
+
+                            </h:panelGrid>
+
+
+                            <p:growl for="mensajeEmpleado" showDetail="true"/>
+                            <br/>
+
+                            <div align="center">
+
+
+                                <p:growl for="mensajeEmpleado" showDetail="true"/>
+                            </div>
+                        </h:form>
+                    </div>
+                </td>
+                <td width="250px">
+
+                    <div class="mt-4">
+                        <center>
+                            <font face="Verdana" size="4"> Eliminar Empleado </font>
+                        </center>
+                        <br></br>
+                        <br></br>
+                        <h:form>
+
+
+                            <h:panelGrid columns="3" cellpadding="5">
+
+                                <p:outputLabel value="Cedula " for="codigo_u"/>
+                                <p:inputText id="codigo_u" value="#{usuarioBean.cedulaEliminar2}" required="true"/>
+                                <p:message for="codigo_u"/>
+
+
+                            </h:panelGrid>
+                            <p:growl showDetail="true" for="mensajeEmpleado"/>
+                            <br/>
+                            <div align="center">
+                                <p:commandButton value="Eliminar Empleado" styleClass="rounded-button ui-button-danger" type="button"
+                                                 icon="pi pi-trash" onclick="PF('dlg2').show()"
+                                                 update="@form"/>
+
+
+
+                                <p:dialog header="¿Eliminar Empleado?" widgetVar="dlg2" minHeight="40" width="450"
+                                          showEffect="fade" modal="true">
+                                    <div align="center">
+
+
+                                    <p:commandButton type="button" value="No, Dejarlo vivir" styleClass="rounded-button ui-button-info" onclick="PF('dlg2').hide()"/>
+
+                                    <p:commandButton type="submit" value="Si, Eliminar" action="#{usuarioBean.eliminarEmpleado}"   styleClass="rounded-button ui-button-danger" update="@form" />
+                                    </div>
+
+
+                                </p:dialog>
+                                <p:growl for="mensajeCliente" showDetail="true"/>
+                            </div>
+                            <p:growl for="mensajeCliente" showDetail="true"/>
+                        </h:form>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        -->

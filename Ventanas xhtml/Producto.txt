@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="WEB-INF/template.xhtml">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    <h:outputScript library="js" name="bootstrap.bundle.min.js"/>
+    <h:outputScript library="css" name="styles.css"/>
+    <ui:define name="title"> Registro Usuario</ui:define>
+
+    <ui:define name="content">
+
+        <table border="4" width="1000px" align="left" cellspacing="2" cellpadding="5" bgcolor="#f0f8ff">
+            <tr>
+                <td width="250px" align="center">
+                    <div class="mt-4">
+                        <font face="Verdana" size="4"> Registrar Producto </font>
+                        <br></br>
+                        <br></br>
+
+
+                        <h:form>
+
+
+                            <h:panelGrid columns="3" cellpadding="5">
+
+                                <p:outputLabel value="Codigo: " for="codigo_u"/>
+                                <p:inputText id="codigo_u" value="#{usuarioBean.codigoRegistro3}" required="true"/>
+                                <p:message for="codigo_u"/>
+
+                                <p:outputLabel value="Cantidad" for="nombre_u"/>
+                                <p:inputText id="nombre_u" value="#{usuarioBean.cantidadRegistro3}" required="true"/>
+                                <p:message for="nombre_u"/>
+
+                                <p:outputLabel value="Categoria" for="email_u"/>
+                                <p:inputText id="email_u" value="#{usuarioBean.categoriaRegistro3}" required="true"/>
+                                <p:message for="email_u"/>
+
+                                <p:outputLabel value="Nombre" for="telefono_u"/>
+                                <p:inputText id="telefono_u" value="#{usuarioBean.nombreRegistro3}" required="true"/>
+                                <p:message for="telefono_u"/>
+
+                                <p:outputLabel value="Precio Compra:" for="celular_u"/>
+                                <p:inputText id="celular_u" value="#{usuarioBean.precioCompraRegistro3}"
+                                             required="true"/>
+                                <p:message for="celular_u"/>
+
+
+                                <p:outputLabel value="Precio Venta:" for="precioVenta"/>
+                                <p:inputText id="precioVenta" value="#{usuarioBean.precioVentaRegistro3}"
+                                             required="true"/>
+                                <p:message for="precioVenta"/>
+
+
+                            </h:panelGrid>
+                            <p:growl showDetail="true" for="mensajeProducto"/>
+                            <br/>
+                            <br/>
+                            <div align="center">
+
+                                <p:commandButton styleClass="rounded-button ui-button-success" value="Registrar Producto"
+                                                 action="#{usuarioBean.registrarProducto}" update="@form"/>
+                            </div>
+                            <p:growl for="mensajeProducto" showDetail="true"/>
+                        </h:form>
+
+                    </div>
+                </td>
+                <td width="250px">
+                    <div class="mt-4">
+                        <center>
+                            <font face="Verdana" size="4"> Actualizar Producto </font>
+                        </center>
+                        <br></br>
+                        <br></br>
+                        <h:form>
+
+
+                            <h:panelGrid columns="3" cellpadding="6">
+
+
+
+
+                                <p:outputLabel value="Codigo: " for="codigo_u"/>
+                                <p:inputText id="codigo_u" value="#{usuarioBean.codigoActualizar3}" required="true"/>
+                                <p:message for="codigo_u"/>
+
+                                <p:outputLabel value="Cantidad" for="nombre_u"/>
+                                <p:inputText id="nombre_u" value="#{usuarioBean.cantidadActualizar3}" />
+                                <p:message for="nombre_u"/>
+
+                                <p:outputLabel value="Categoria" for="email_u"/>
+                                <p:inputText id="email_u" value="#{usuarioBean.categoriaActualizar3}" />
+                                <p:message for="email_u"/>
+
+                                <p:outputLabel value="Nombre" for="telefono_u"/>
+                                <p:inputText id="telefono_u" value="#{usuarioBean.nombreActualizar3}" />
+                                <p:message for="telefono_u"/>
+
+                                <p:outputLabel value="Precio Compra:" for="celular_u"/>
+                                <p:inputText id="celular_u" value="#{usuarioBean.precioCompraActualizar3}"
+                                             required="true"/>
+                                <p:message for="celular_u"/>
+
+
+                                <p:outputLabel value="Precio Venta:" for="precioVenta"/>
+                                <p:inputText id="precioVenta" value="#{usuarioBean.precioVentaActualizar3}"
+                                             required="true"/>
+                                <p:message for="precioVenta"/>
+
+
+                                <p:outputLabel for="inventario" value="Inventario"/>
+                                <p:selectOneMenu id="inventario" value="#{usuarioBean.inventarioActualizar3}"
+                                                 dynamic="true">
+                                    <f:selectItem itemLabel="Seleccione un inventario" itemValue=""/>
+                                    <f:selectItems value="#{usuarioBean.nombresInventarios}"/>
+                                </p:selectOneMenu>
+                                <p:message for="inventario"/>
+
+
+                                <p:outputLabel for="proveedor" value="proveedor"/>
+                                <p:selectOneMenu id="proveedor" value="#{usuarioBean.proveedorActualizar3}"
+                                                 dynamic="true">
+                                    <f:selectItem itemLabel="Seleccione un proveedor" itemValue=""/>
+                                    <f:selectItems value="#{usuarioBean.nombresProveedores}"/>
+                                </p:selectOneMenu>
+                                <p:message for="proveedor"/>
+
+
+                            </h:panelGrid>
+                            <p:growl for="mensajeProducto" showDetail="true"/>
+                            <br/>
+
+                            <div align="center">
+                                <h:commandButton value="Buscar Producto"
+                                                 action="#{usuarioBean.buscarProducto}" update="@form"/>
+
+
+                                <p:commandButton styleClass="rounded-button ui-button-warning"
+                                                 value="Actualizar Producto"
+                                                 action="#{usuarioBean.actualizarProducto}" update="@form"/>
+                                <p:growl for="mensajeProducto" showDetail="true"/>
+
+                            </div>
+
+                        </h:form>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+
+                <td width="250px">
+                    <div class="mt-4">
+                        <center>
+                            <font face="Verdana" size="4"> Buscar Producto </font>
+                        </center>
+                        <br></br>
+                        <br></br>
+                        <h:form>
+
+                            <h:panelGrid columns="3" cellpadding="5">
+
+                                <p:outputLabel value="Cedula " for="codigo_u"/>
+                                <p:inputText id="codigo_u" value="#{usuarioBean.codigoBuscar3}" required="true"/>
+                                <p:message for="codigo_u"/>
+
+
+                            </h:panelGrid>
+                            <p:growl showDetail="true" for="mensajeProducto"/>
+                            <br/>
+                            <div align="center">
+                                <h:commandButton value="Buscar Producto"
+                                                 action="#{usuarioBean.buscarProducto2}" update="@form"/>
+                            </div>
+
+                            <br/>
+                            <br/>
+
+
+                            <h:panelGrid columns="3" cellpadding="6" >
+                                
+                                <h:panelGrid columns="3" cellpadding="5">
+
+                                    <p:outputLabel value="Codigo: " for="cood"/>
+                                    <p:inputText id="cood" value="#{usuarioBean.codigoBuscar3}" required="true"/>
+                                    <p:message for="cood"/>
+
+                                    <p:outputLabel value="Cantidad" for="nombre_u"/>
+                                    <p:inputText id="nombre_u" value="#{usuarioBean.cantidadBuscar3}" required="true"/>
+                                    <p:message for="nombre_u"/>
+
+                                    <p:outputLabel value="Categoria" for="email_u"/>
+                                    <p:inputText id="email_u" value="#{usuarioBean.categoriaBuscar3}" required="true"/>
+                                    <p:message for="email_u"/>
+
+                                    <p:outputLabel value="Nombre" for="telefono_u"/>
+                                    <p:inputText id="telefono_u" value="#{usuarioBean.nombreBuscar3}" required="true"/>
+                                    <p:message for="telefono_u"/>
+
+                                    <p:outputLabel value="Precio Compra:" for="celular_u"/>
+                                    <p:inputText id="celular_u" value="#{usuarioBean.precioCompraBuscar3}"
+                                                 required="true"/>
+                                    <p:message for="celular_u"/>
+
+
+                                    <p:outputLabel value="Precio Venta:" for="precioVenta"/>
+                                    <p:inputText id="precioVenta" value="#{usuarioBean.precioVentaBuscar3}"
+                                                 required="true"/>
+                                    <p:message for="precioVenta"/>
+
+
+                                    <p:outputLabel value="Inventario:" for="inventario"/>
+                                    <p:inputText id="inventario" value="#{usuarioBean.inventarioBuscar3}"
+                                                 required="true"/>
+                                    <p:message for="inventario"/>
+
+                                    <p:outputLabel value="Proveedor:" for="proveedor"/>
+                                    <p:inputText id="proveedor" value="#{usuarioBean.proveedorBuscar3}"
+                                                 required="true"/>
+                                    <p:message for="proveedor"/>
+
+
+                                </h:panelGrid>
+
+                            </h:panelGrid>
+
+
+                            <p:growl for="mensajeProducto" showDetail="true"/>
+                            <br/>
+
+                            <div align="center">
+
+
+                                <p:growl for="mensajeProducto" showDetail="true"/>
+                            </div>
+                        </h:form>
+                    </div>
+                </td>
+                <td width="250px">
+
+                    <div class="mt-4">
+                        <center>
+                            <font face="Verdana" size="4"> Eliminar Producto </font>
+                        </center>
+                        <br></br>
+                        <br></br>
+                        <h:form>
+                            <h:panelGrid columns="3" cellpadding="5">
+                                <p:outputLabel value="Codigo " for="cod"/>
+                                <p:inputText id="cod" value="#{usuarioBean.codigoEliminar3}" required="true"/>
+                                <p:message for="cod"/>
+
+
+                            </h:panelGrid>
+                            <p:growl showDetail="true" for="mensajeProducto"/>
+                            <br/>
+                            <div align="center">
+                                <p:commandButton value="Eliminar Producto" styleClass="rounded-button ui-button-danger"
+                                                 type="button"
+                                                 icon="pi pi-trash" onclick="PF('dlg2').show()"
+                                                 update="@form"/>
+
+
+                                <p:dialog header="¿Eliminar Producto?" widgetVar="dlg2" minHeight="40" width="450"
+                                          showEffect="fade" modal="true">
+                                    <div align="center">
+
+
+                                        <p:commandButton type="button" value="No, Dejarlo vivir"
+                                                         styleClass="rounded-button ui-button-info"
+                                                         onclick="PF('dlg2').hide()"/>
+
+                                        <p:commandButton type="submit" value="Si, Eliminar Producto"
+                                                         action="#{usuarioBean.eliminarProducto}"
+                                                         styleClass="rounded-button ui-button-danger" update="@form"/>
+                                    </div>
+
+
+                                </p:dialog>
+                                <p:growl for="mensajeProducto" showDetail="true"/>
+                            </div>
+                            <p:growl for="mensajeProducto" showDetail="true"/>
+                        </h:form>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </ui:define>
+</ui:composition>
+</html>
